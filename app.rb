@@ -16,14 +16,17 @@ get '/hello/:name' do |n|
   "Hello #{n}"
 end
 
-# get '/success?last4=:digits&amount=:amt' do
-#  "Your card ending in #{digits} has been charged #{amt} cents."
-# end
-
 get '/success' do
-  # matches "GET /posts?title=foo&author=bar"
+  # matches "GET /success?last4=foo&amount=bar"
   last4 = params['last4']
   amount = params['amount']
   "Your card ending in #{last4} has been charged #{amount} cents"
-  # uses title and author variables; query is optional to the /posts route
+end
+
+
+
+post '/pay' do
+  p "The data sent to the /pay POST route is:"
+  p params
+  redirect to('/success')
 end
