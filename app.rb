@@ -4,8 +4,8 @@ get '/' do
   "This is the home page."
 end
 
-post '/hoho' do
-  "hoho"
+get '/success' do
+  "Your payment has processed successfully."
 end
 
 get '/hello' do
@@ -14,20 +14,4 @@ end
 
 get '/hello/:name' do |n|
   "Hello #{n}"
-end
-
-
-post '/' do
-  "hello"
-end
-
-post '/' do
-  "bye"
-end
-
-get '/posts' do
-  # matches "GET /posts?title=foo&author=bar"
-  title = params['title']
-  author = params['author']
-  # uses title and author variables; query is optional to the /posts route
 end
