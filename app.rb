@@ -1,6 +1,19 @@
 require 'sinatra'
+require 'sqlite3'
 
 get '/' do
+  # connect to the database
+  db = SQLite3::Database.open('store.db')
+
+  # configure results to be returned as as an array of hashes instead of nested arrays
+  db.results_as_hash = true
+
+  # query the products table and print the result
+  puts "Database query results:"
+  p db.execute("SELECT id, description, price FROM products;")
+
+  # close database connection
+  db.close
   erb  :home
 end
 
