@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get '/' do
-  "This is the home page."
+  erb  :home
 end
 
 get '/test' do
