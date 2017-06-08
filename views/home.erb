@@ -10,5 +10,13 @@
     <p><%= @products %></p>
     <h2>Store Hours and Location</h2>
     <p>M-F: 9am - 5pm</p>
+
+    <h2>Payment Form</h2>
+
+    <form action="/pay" method="POST">
+      <p><input type="text" name="email" placeholder="email"></p>
+      <button type="submit">Pay now</button>
+    </form>
+
   </body>
 </html>
