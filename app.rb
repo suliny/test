@@ -10,7 +10,7 @@ get '/' do
 
   # query the products table and print the result
   puts "Database query results:"
-  p db.execute("SELECT id, description, price FROM products;")
+  @products = db.execute("SELECT id, description, price FROM products;")
 
   # close database connection
   db.close
