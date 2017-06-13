@@ -12,8 +12,15 @@
         console.log("This script is working!");
         Stripe.setPublishableKey('pk_test_NsHguw7Fp2awsJLraOx11DcW');
 
+        var tokenResponseHandler = function(status, response) {
+          console.log("Response from Stripe token call:");
+          console.log(response);
+          // TODO: check for any input validation errors
+          // TODO: if there are errors, display them at the top of the form
+          // TODO: if there are not errors, add the token info to the form as a hidden field
+          // TODO: submit the form
+        };
 
-        // TODO: write a Stripe token response handler function here
         $('#payment-form').submit(function(event) {
           // pause form submission
           event.preventDefault();
@@ -24,7 +31,12 @@
 
           console.log("Form submission is paused!");
 
-          // TODO: call the createToken function
+          Stripe.card.createToken({
+            number: $('#card-number').val(),
+            cvc: $('#card-CVC').val(),
+            exp_month: $('#card-exp-m').val(),
+            exp_year: $('#card-exp-y').val(),
+          }, tokenResponseHandler);
         });
 
       });
