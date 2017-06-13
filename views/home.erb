@@ -11,7 +11,25 @@
       $(document).ready(function() {
         console.log("This script is working!");
         Stripe.setPublishableKey('pk_test_NsHguw7Fp2awsJLraOx11DcW');
+
+
+        // TODO: write a Stripe token response handler function here
+        $('#payment-form').submit(function(event) {
+          // pause form submission
+          event.preventDefault();
+
+          // prevent the user from submitting twice
+          // by disabling the submit button
+          $('#submit-button').attr('disabled','disabled');
+
+          console.log("Form submission is paused!");
+
+          // TODO: call the createToken function
+        });
+
       });
+
+
     </script>
   </head>
   <body>
