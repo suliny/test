@@ -3,17 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title>Su's Cupcakerie</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--adding stripe.js script-->
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <!--adding own script-->
+    <script>
+      $(document).ready(function() {
+        console.log("This script is working!");
+        Stripe.setPublishableKey('pk_test_NsHguw7Fp2awsJLraOx11DcW');
+      });
+    </script>
   </head>
   <body>
     <h1>Welcome to Su's Cupcakerie!</h1>
     <h2>Cupcake Flavors</h2>
-    <p><%= @products %></p>
     <h2>Store Hours and Location</h2>
     <p>M-F: 9am - 5pm</p>
 
     <h2>Payment Form</h2>
 
     <form action="/pay" method="POST">
+
+      <% @products.each do |product| %>
+        <p><input type="radio" name="productId" value=<%= product["id"] %>>
+          Flavor: <%= product["description"] %>,
+          Price: <%= product["price"] %>cents
+        </p>
+      <% end %>
       <p><input type="text" name="email" placeholder="email"></p>
       <button type="submit">Pay now</button>
     </form>
