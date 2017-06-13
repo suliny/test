@@ -21,17 +21,24 @@
     <p>M-F: 9am - 5pm</p>
 
     <h2>Payment Form</h2>
+    <p id="payment-error-msg"><!--placeholder for payment errors--></p>
+    <form id="payment-form" action="/pay" method="POST">
 
-    <form action="/pay" method="POST">
-
+      <!--listing products-->
       <% @products.each do |product| %>
         <p><input type="radio" name="productId" value=<%= product["id"] %>>
           Flavor: <%= product["description"] %>,
           Price: <%= product["price"] %>cents
         </p>
       <% end %>
+
+      <!--adding form fields-->
       <p><input type="text" name="email" placeholder="email"></p>
-      <button type="submit">Pay now</button>
+      <p><input id="card-number" type="text" placeholder="card number"></p>
+      <p><input id="card-exp-m" type="text" placeholder="MM"></p>
+      <p><input id="card-exp-y" type="text" placeholder="YY"></p>
+      <p><input id="card-CVC" type="text" placeholder="CVC"></p>
+      <button id="submit-button" type="submit">Pay now</button>
     </form>
 
   </body>
